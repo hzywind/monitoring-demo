@@ -1,0 +1,1 @@
+docker build -f .\src\main\docker\Dockerfile -t monitoring-demo/micrometer-example:0.0.1-SNAPSHOT --build-arg APP_NAME=micrometer-example-0.1.0-SNAPSHOT.jar .

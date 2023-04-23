@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>micrometer-example</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1.0-SNAPSHOT</version>
 	<name>micrometer-example</name>
 	<description>Demo project for Spring Boot and Micrometer</description>
 	<properties>
@@ -42,6 +42,28 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>1.4.13</version>
+				<executions>
+					<execution>
+						<id>build-image</id>
+						<phase>package</phase>
+						<goals>
+							<goal>build</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<contextDirectory>${project.basedir}</contextDirectory>
+					<repository>monitoring-demo/${project.artifactId}</repository>
+					<tag>${project.version}</tag>
+					<buildArgs>
+						<APP_NAME>${project.build.finalName}.jar</APP_NAME>
+					</buildArgs>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
