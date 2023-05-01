@@ -4,12 +4,12 @@ services:
     image: prom/prometheus:v2.43.0
     container_name: prometheus
     ports:
-      - 9090:9090
+      - "9090:9090"
     volumes:
       - ../prometheus.yml:/etc/prometheus/prometheus.yml
 
-  micrometer:
-    image: monitoring-demo/micrometer-example:0.0.1-SNAPSHOT
-    container_name: micrometer
+  monitoring-demo-app:
+    image: monitoring-demo/micrometer-example:0.1.0-SNAPSHOT
+    container_name: monitoring-demo-app
     ports:
-      - 8080:8080
+      - "8080:8080"
